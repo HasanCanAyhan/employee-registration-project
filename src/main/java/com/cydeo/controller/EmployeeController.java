@@ -34,10 +34,18 @@ public class EmployeeController {
     @PostMapping("/insert")
     public String insertEmployee(@ModelAttribute("employee") Employee employee){ // coming from Form
 
-        employeeService.saveEmployee(employee);
+        employeeService.saveEmployee(employee); // saving employee
 
-        return "employee/employee-list";
+        return "redirect:/employee/list"; // end point // with redirect we are using endpoints
     }
 
+    @GetMapping("/list")
+    public String listEmployees(Model model){
+
+        model.addAttribute("employeeList",employeeService.readAllEmployees());
+
+        return "employee/employee-list";// we are using html file paths , showing list of employee to the user
+
+    }
 
 }
