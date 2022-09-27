@@ -6,6 +6,8 @@ import lombok.NoArgsConstructor;
 import lombok.ToString;
 import org.springframework.format.annotation.DateTimeFormat;
 
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.Size;
 import java.time.LocalDate;
 
 @Data
@@ -13,6 +15,17 @@ import java.time.LocalDate;
 @AllArgsConstructor
 public class Employee {
 
+    //VALIDATION
+    //@NotNull  --> Field should not be null
+    //@NotEmpty --> Field should not be ""
+    //@NotBlank --> Field should not be "     "
+
+    //@NotNull -> @NotNull
+    //@NotEmpty -> @NotNull + @NotEmpty
+    //@NotBlank -> @NotNull + @NotEmpty + @NotBlank
+
+    @NotBlank
+    @Size(max = 12, min = 2)
     private String firstName;
     private String lastName;
 
